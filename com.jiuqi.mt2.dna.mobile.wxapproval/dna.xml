@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dna>
+	<publish>
+		<dna-webapps>
+			<webapp webroot="js" alias="xspi/mt2/js" />
+			<webapp webroot="css" alias="xspi/mt2/css" />
+			<webapp webroot="img" alias="xspi/mt2/img" />
+			<webapp webroot="webroot" alias="wxapproval" />
+		</dna-webapps>
+		<services>
+			<service space="wxapproval" class="com.jiuqi.mt2.dna.mobile.wxapproval.mfo.MPushMessageObserveService"/>
+			<service space="wxapproval" class="com.jiuqi.mt2.dna.mobile.wxapproval.service.ObtainApprovalBillService"/>
+			<service space="wxapproval" class="com.jiuqi.mt2.dna.mobile.wxapproval.service.TodoWXApprovalService"/>
+		</services>
+		<orms>
+			<!-- orm space="dna/core" class="com.jiuqi.dna.core.XXORM" -->
+		</orms>
+		<commands>
+			<!-- command space="dna/core" class="com.jiuqi.dna.core.XXCommand" -->
+		</commands>
+		<querys>
+			<!-- query space="dna/core" class="com.jiuqi.dna.core.XXQuery" -->
+		</querys>
+		<tables>
+			<!--table space="dna/core" class="com.jiuqi.dna.core.impl.TD_BundleBin"-->
+		</tables>
+		<ui-entrys>
+			<!--uientry class="com.jiuqi.dna.bap.workflowmanager.define.ui.DemoApplicationUIEntry" name="workflowdefine"></uientry -->
+		</ui-entrys>
+		<pages>
+			<!--page space="mydemo" name="testtemplate" class="com.jiuqi.dna.ui.template.launch.TemplatePage" -->
+		</pages>
+		<ui-stylesheets>
+			<!-- stylesheet name="stylesheet" title="stylesheet" path="com/jiuqi/dna/ui/demo/stylesheet.css" -->
+		</ui-stylesheets>
+		<portlets>
+			<!-- portlet name="portlet" class="com.jiuqi.dna.ui.XXPortlet" -->
+		</portlets>
+		
+		<modelFunctions>
+			<modelFunction modelName = "BusinessModel" class = "com.jiuqi.mt2.dna.mobile.wxapproval.function.WXDoAction" />
+			<modelFunction modelName = "BusinessModel" class = "com.jiuqi.mt2.dna.mobile.wxapproval.function.WXConfirmDoAction" />
+			<modelFunction modelName = "BusinessModel" class = "com.jiuqi.mt2.dna.mobile.wxapproval.function.WXConfirmDoFormula" />
+			<modelFunction modelName = "BusinessModel" class = "com.jiuqi.mt2.dna.mobile.wxapproval.function.WXMsgDialogFunction" />
+			<modelFunction modelName = "BusinessModel" class = "com.jiuqi.mt2.dna.mobile.wxapproval.function.WXSetBillDetailFieldValue" />
+			<modelFunction modelName = "BusinessModel" class = "com.jiuqi.mt2.dna.mobile.wxapproval.function.WXSetOtherTableFieldValue" />
+		    <modelFunction modelName = "BusinessModel" class = "com.jiuqi.mt2.dna.mobile.wxapproval.function.SendMessageToWx" />
+		</modelFunctions>
+	</publish>
+	
+	<servlets>
+	 
+		<!--获取单据待审批列表页面-->
+		<servlet class="com.jiuqi.mt2.dna.mobile.wxapproval.servlet.ObtainPendingBills" 
+			path="/xspi/mt2/openwxpendingbills/*" space="wxapproval"/>
+		<!--获取我提交的单据的列表-->
+		<servlet class="com.jiuqi.mt2.dna.mobile.wxapproval.servlet.ObtainMyBills"	
+			path="/xspi/mt2/openwxmybills/*" space="wxapproval" />		
+		<!--获取审批单据页面-->
+		<servlet class="com.jiuqi.mt2.dna.mobile.wxapproval.servlet.ObtainApprovalBill" 
+			path="/xspi/mt2/openwxapproval/*" space="wxapproval" />
+		<!--获取已审批单据页面-->
+		<servlet class="com.jiuqi.mt2.dna.mobile.wxapproval.servlet.ObtainApprovedBill" 
+			path="/xspi/mt2/openwxapproved/*" space="wxapproval" />
+		<!--执行审批-->
+		<servlet class="com.jiuqi.mt2.dna.mobile.wxapproval.servlet.TodoWXApproval"	
+			path="/xspi/mt2/execute_wxapproval/*" space="wxapproval" />
+		<!--审批的后续动作-->
+		<servlet class="com.jiuqi.mt2.dna.mobile.wxapproval.servlet.TodoWXApprovalHint"	
+			path="/xspi/mt2/execute_wxapprovalhint/*" space="wxapproval" />	
+		<servlet class="com.jiuqi.mt2.dna.mobile.wxapproval.servlet.WxUserContextServlet" 
+			path="/xspi/mt2/wxuserctx/*" space="wxapproval" />
+		<servlet class="com.jiuqi.mt2.dna.mobile.wxapproval.servlet.EnclosurePreviewServlet"
+			path="/xspi/mt2/wxattachment" space="wxapproval" />	  
+		<!--微信附件下载-->
+	    <servlet class="com.jiuqi.mt2.dna.mobile.wxapproval.servlet.WXFileDownloadServlet"
+			path="/xspi/mt2/download" space="wxapproval" />
+			
+	    <servlet class="com.jiuqi.mt2.dna.mobile.wxapproval.servlet.GetBaseDataServlet"
+			path="/xspi/mt2/selectbasedata" space="wxapproval" />
+	</servlets>
+</dna>
